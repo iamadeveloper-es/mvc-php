@@ -5,7 +5,7 @@ class DbConnection{
     private $username = "root";
     private $password = "root";
     private $db = "schedule_control";
-    private $conn = "root";
+    public $conn;
 
     public function __construct(){
 
@@ -15,8 +15,20 @@ class DbConnection{
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
-        echo "Connected successfully";
+        //echo "Connected successfully";
+        
     }
+
+    public function getConnection(){
+        return $this->conn;
+    }
+
+    public function closeDB(){
+        return $this->conn->close();
+    }
+
+    
+
 }
 
 ?>
