@@ -14,10 +14,10 @@ class LoginModel{
      */
     public function login($email, $pass){
 
-        $sql = "SELECT username as username, 'false' as IsAdmin FROM students 
-        WHERE email = '$email' AND pass = '$pass' UNION ALL SELECT 
-        username as username, 'true' as IsAdmin FROM users_admin WHERE 
-        email = '$email' AND password = '$pass'";
+        $sql = "SELECT username as username, email as email, 'false' as IsAdmin 
+        FROM students WHERE email = '$email' AND pass = '$pass' UNION ALL SELECT 
+        username as username, email as email, 'true' as IsAdmin FROM users_admin 
+        WHERE email = '$email' AND password = '$pass'";
         
         $results = $this->mysqli->getConnection()->query($sql);
 
@@ -26,6 +26,7 @@ class LoginModel{
             while($row = $results->fetch_assoc()) {
                 $this->user['username'] = $row["username"];
                 $this->user['IsAdmin'] = $row["IsAdmin"];
+                $this->user['email'] = $row["email"];
             }
         }
     }

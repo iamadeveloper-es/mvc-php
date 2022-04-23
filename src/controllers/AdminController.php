@@ -1,6 +1,6 @@
 <?php 
 include("src/helpers/session.php");
-hasSession();
+isAdminAuthenticated();
 
 class AdminController{
     private $title;

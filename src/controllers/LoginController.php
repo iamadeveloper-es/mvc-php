@@ -51,8 +51,13 @@ class LoginController{
                     //ADMINISTRADOR
                     //iniciamos sesión
                     session_start();
-                    //guardamos el valor de la sesión 
-                    $_SESSION["user"] = $user['username'];
+
+                    //guardamos el valor de la sesión para un admin
+                    $_SESSION["admin"] = array();
+                    $_SESSION["admin"]["username"] = $user['username'];
+                    $_SESSION["admin"]["email"] = $user['email'];
+                    $_SESSION["admin"]["IsAdmin"] = $user['IsAdmin'];
+
                     //redirigimos al usuario a las páginas secretas y protejidas
                     header('Location: '.serverURL().'/mvc-php/index.php?c=admin');
                     
@@ -61,8 +66,13 @@ class LoginController{
                     //ESTUDIANTE
                     //iniciamos sesión
                     session_start();
-                    //guardamos el valor de la sesión 
-                    $_SESSION["user"] = $user['username'];
+
+                    //guardamos el valor de la sesión para un estudiante
+                    $_SESSION["student"] = array();
+                    $_SESSION["student"]["username"] = $user['username'];
+                    $_SESSION["student"]["email"] = $user['email'];
+                    $_SESSION["student"]["IsAdmin"] = $user['IsAdmin'];
+
                     //redirigimos al usuario a las páginas secretas y protejidas
                     header('Location: '.serverURL().'/mvc-php/index.php?c=student');
                 }

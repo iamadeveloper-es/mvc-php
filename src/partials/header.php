@@ -1,3 +1,7 @@
+<?php
+    include_once("src/helpers/session.php");
+    $isUserAuthenticated = isUserAuthenticated();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,12 +26,12 @@
                             <div class="d-lg-flex justify-content-between w-100">
                                 <div class="navbar-nav">
                                     <a class="nav-item nav-link active" href="index.php">Home</a>
-                                    <?php if(empty($_SESSION["user"])){ ?>
+                                    <?php if(!$isUserAuthenticated){ ?>
                                     <a class="nav-item nav-link" href="index.php?c=login">Login</a>
                                     <a class="nav-item nav-link" href="index.php?c=register">Register</a>
                                     <?php }; ?>
                                 </div>
-                                <?php if(!empty($_SESSION["user"])){ ?>
+                                <?php if($isUserAuthenticated){ ?>
                                 <div class="logout">
                                     <a class="btn btn-primary" href="index.php?c=logout">Logout</a>
                                 </div>
