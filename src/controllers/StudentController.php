@@ -6,6 +6,7 @@ isStudentAuthenticated();
 class StudentController{
     private $title;
     private $model;
+    private $courses;
 
 
     public function __construct(){
@@ -15,6 +16,7 @@ class StudentController{
 
     public function index(){
         $this->title = "Student Panel";
+        $this->courses = $this->model->index();
         require_once "src/views/studentPanelView.php";
     }
 

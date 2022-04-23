@@ -15,6 +15,9 @@ class DbConnection{
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
+        /* if (!$this->conn->error) {
+            printf("Errormessage: %s\n", $this->conn->error);
+        } */
         //echo "Connected successfully";
         
     }
@@ -26,8 +29,6 @@ class DbConnection{
     public function closeDB(){
         return $this->conn->close();
     }
-
-    
 
 }
 

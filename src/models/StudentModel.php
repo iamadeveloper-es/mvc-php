@@ -4,35 +4,24 @@
 class StudentModel{
     private $mysqli;
     private $student = array();
+    private $courses = array();
 
     public function __construct(){
         $this->mysqli = new DbConnection();
     }
 
-    
-    public function getStudentData(){
+    public function index(){
+        $sql = "SELECT * FROM courses";
 
-        /* $sql = "SELECT username as username, 'false' as IsAdmin FROM students 
-        WHERE email = '$email' AND pass = '$pass' UNION ALL SELECT 
-        username as username, 'true' as IsAdmin FROM users_admin WHERE 
-        email = '$email' AND password = '$pass'";
-        
         $results = $this->mysqli->getConnection()->query($sql);
 
         if ($results->num_rows > 0) {
-            
-            while($row = $results->fetch_assoc()) {
-                $this->user['username'] = $row["username"];
-                $this->user['IsAdmin'] = $row["IsAdmin"];
+            while($row = $results->fetch_array()) {
+                $this->courses[] = $row;
             }
-        } */
-    }
-
-    /**
-     * Devuelve el estudiante obtenido trás la consulta
-     */
-    public function getStudent(){
-        return $this->student;
+            return $this->courses;
+            
+        }
     }
 }
 

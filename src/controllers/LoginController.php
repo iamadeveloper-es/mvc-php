@@ -43,8 +43,9 @@ class LoginController{
             $this->model->login($email, $pass);
             $user = $this->model->getUser();
 
-            if(count($user) == 0){
-                return $this->errors[] = "User was not found";
+            if(!count($user) > 0){
+                $this->errors[] = "User was not found";
+                
             }
             else {
                 if($user['IsAdmin'] === 'true'){
@@ -76,6 +77,7 @@ class LoginController{
                     //redirigimos al usuario a las páginas secretas y protejidas
                     header('Location: '.serverURL().'/mvc-php/index.php?c=student');
                 }
+                
             }
 
         }else{
