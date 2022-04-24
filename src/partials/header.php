@@ -43,7 +43,9 @@
                                 <div class="user-info d-lg-flex align-items-center">
                                     <span><?php echo 'Hola: @'.sessionInfo()['username']; ?></span>
                                     <div class="logout ms-lg-3">
+                                        <?php if(isset($_SESSION["student"])): ?>
                                         <a class="btn btn-primary btn-sm me-lg-2" href="index.php?c=studentProfile">View profile</a>
+                                        <?php endif; ?>
                                         <a class="btn btn-dark btn-sm" href="index.php?c=logout">Logout</a>
                                     </div>
                                 </div>
